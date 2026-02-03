@@ -1,73 +1,105 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Chain-Link Server 🔗
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A robust **NestJS-based blockchain middleware** designed to interact with the **UniversalRegistry** smart contract across multiple EVM chains, including **Polygon Amoy** and **Ethereum Sepolia**.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 🚀 Features
 
-## Description
+- **🌐 Multi-Chain Support**: Seamlessly interact with smart contracts on Polygon Amoy and Ethereum Sepolia.
+- **📝 Registry Management**: Simple RESTful API to **write**, **read**, and **verify** records on-chain.
+- **🔐 Secure Signing**: Integrated server-side wallet management for secure transaction signing.
+- **📚 Swagger Documentation**: Fully automated, interactive API documentation available at `/api`.
+- **🛡 Type-Safe & Modular**: Built with TypeScript and NestJS, ensuing scalability and maintainability.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 📋 Prerequisites
 
-## Installation
+Ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- [npm](https://www.npmjs.com/)
+- An EVM Wallet Private Key with testnet funds (for Amoy or Sepolia).
 
-```bash
-$ npm install
-```
+## 🛠 Installation
 
-## Running the app
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/thisha-me/chain-link-server.git
+   cd chain-link-server
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+## ⚙️ Configuration
+
+1. **Create the environment file**
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Configure Environment Variables**
+   Open `.env` and populate it with your values:
+
+   | Variable | Description | Example |
+   |----------|-------------|---------|
+   | `PRIVATE_KEY` | Your wallet private key (required for writing) | `0x123abc...` |
+   | `POLYGON_AMOY_RPC` | RPC endpoint for Polygon Amoy | `https://rpc-amoy.polygon.technology` |
+   | `POLYGON_AMOY_REGISTRY_ADDRESS` | Contract Address on Amoy | `0xc1a3...` |
+   | `SEPOLIA_RPC` | RPC endpoint for Sepolia | `https://rpc.sepolia.org` |
+   | `SEPOLIA_REGISTRY_ADDRESS` | Contract Address on Sepolia | `0xa700...` |
+   | `PORT` | API Server Port | `3000` |
+
+## 🏃‍♂️ Running the Application
 
 ```bash
 # development
-$ npm run start
+npm run start
 
-# watch mode
-$ npm run start:dev
+# watch mode (recommended for dev)
+npm run start:dev
 
 # production mode
-$ npm run start:prod
+npm run start:prod
 ```
 
-## Test
+## 📚 API Documentation
+
+Once the server is running, access the **Swagger UI** to inspect and test endpoints:
+
+👉 **[http://localhost:3000/api](http://localhost:3000/api)**
+
+### Key Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/registry` | Write a new key-value pair to the registry. |
+| `GET` | `/registry/:key` | Retrieve the value for a specific key. Query param `?chain=AMOY` or `SEPOLIA`. |
+| `GET` | `/registry/exists/:key` | Check if a key exists on the specified chain. |
+
+## 🧪 Testing
 
 ```bash
 # unit tests
-$ npm run test
+npm run test
 
 # e2e tests
-$ npm run test:e2e
+npm run test:e2e
 
 # test coverage
-$ npm run test:cov
+npm run test:cov
 ```
 
-## Support
+## 📂 Project Structure
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+src/
+├── blockchain/       # Blockchain integration (Ethers.js provider/signer)
+├── common/           # Shared enums, interfaces, and utilities
+├── config/           # Configuration service (Environment validation)
+├── registry/         # Core business logic (Controller, Service, DTOs)
+└── main.ts           # Application entry point
+```
 
-## Stay in touch
+## 📄 License
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+This project is [MIT licensed](LICENSE).
