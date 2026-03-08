@@ -27,7 +27,7 @@ import { GetRecordDto } from '../dto/get-record.dto';
 @ApiTags('Registry')
 @Controller('registry')
 export class RegistryController {
-  constructor(private readonly registryService: RegistryService) { }
+  constructor(private readonly registryService: RegistryService) {}
 
   @Post('record')
   @HttpCode(HttpStatus.CREATED)

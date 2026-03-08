@@ -14,7 +14,8 @@ export class GetRecordDto {
 
   @ApiProperty({
     example: 'my-namespace',
-    description: 'Namespace identifier (UTF-8 string, will be hashed in backend)',
+    description:
+      'Namespace identifier (UTF-8 string, will be hashed in backend)',
   })
   @IsString()
   @IsNotEmpty()

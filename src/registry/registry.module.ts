@@ -10,4 +10,4 @@ import { RegistryService } from './services';
   providers: [RegistryService],
   exports: [RegistryService],
 })
-export class RegistryModule { }
+export class RegistryModule {}

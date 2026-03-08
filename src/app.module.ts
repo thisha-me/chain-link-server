@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule as NestConfigModule } from '@nestjs/config';
 import { BlockchainModule } from './blockchain';
 import { RegistryModule } from './registry';
+import { FabricRegistryModule } from './fabric-registry/fabric-registry.module';
 
 @Module({
   imports: [
@@ -11,8 +12,9 @@ import { RegistryModule } from './registry';
     }),
     BlockchainModule,
     RegistryModule,
+    FabricRegistryModule,
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {}
