@@ -135,7 +135,9 @@ export class RegistryController {
     },
   })
   @ApiResponse({ status: 400, description: 'Invalid request parameters' })
-  async recordExists(@Query() dto: GetRecordDto): Promise<RecordExistsResponse> {
+  async recordExists(
+    @Query() dto: GetRecordDto,
+  ): Promise<RecordExistsResponse> {
     return this.registryService.recordExists(dto);
   }
 }
