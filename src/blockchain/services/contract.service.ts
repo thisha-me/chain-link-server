@@ -12,7 +12,7 @@ export class ContractService {
     private readonly chainsConfigService: ChainsConfigService,
     private readonly providerService: ProviderService,
     private readonly signerService: SignerService,
-  ) { }
+  ) {}
 
   getReadContract(chain: SupportedChain): Contract {
     const config = this.chainsConfigService.getChainConfig(chain);

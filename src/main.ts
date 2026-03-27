@@ -21,9 +21,14 @@ async function bootstrap() {
   // Swagger setup
   const config = new DocumentBuilder()
     .setTitle('UniversalRegistry API')
-    .setDescription('Multi-chain blockchain middleware for UniversalRegistry smart contract')
+    .setDescription(
+      'Multi-chain blockchain middleware for UniversalRegistry smart contract',
+    )
     .setVersion('1.0')
-    .addTag('Registry', 'Endpoints for interacting with the UniversalRegistry contract')
+    .addTag(
+      'Registry',
+      'Endpoints for interacting with the UniversalRegistry contract',
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

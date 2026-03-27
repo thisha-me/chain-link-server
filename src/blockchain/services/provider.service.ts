@@ -7,7 +7,7 @@ import { ChainsConfigService } from '../../config';
 export class ProviderService {
   private readonly providers: Map<SupportedChain, JsonRpcProvider> = new Map();
 
-  constructor(private readonly chainsConfigService: ChainsConfigService) { }
+  constructor(private readonly chainsConfigService: ChainsConfigService) {}
 
   getProvider(chain: SupportedChain): JsonRpcProvider {
     if (this.providers.has(chain)) {

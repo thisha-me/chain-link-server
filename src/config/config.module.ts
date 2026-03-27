@@ -7,4 +7,4 @@ import { ChainsConfigService } from './services';
   providers: [ChainsConfigService],
   exports: [ChainsConfigService],
 })
-export class ConfigModule { }
+export class ConfigModule {}

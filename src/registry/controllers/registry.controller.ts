@@ -27,7 +27,7 @@ import { GetRecordDto } from '../dto/get-record.dto';
 @ApiTags('Registry')
 @Controller('registry')
 export class RegistryController {
-  constructor(private readonly registryService: RegistryService) { }
+  constructor(private readonly registryService: RegistryService) {}
 
   @Post('record')
   @HttpCode(HttpStatus.CREATED)
@@ -135,7 +135,9 @@ export class RegistryController {
     },
   })
   @ApiResponse({ status: 400, description: 'Invalid request parameters' })
-  async recordExists(@Query() dto: GetRecordDto): Promise<RecordExistsResponse> {
+  async recordExists(
+    @Query() dto: GetRecordDto,
+  ): Promise<RecordExistsResponse> {
     return this.registryService.recordExists(dto);
   }
 }

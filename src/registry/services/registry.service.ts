@@ -1,7 +1,6 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { keccak256, toUtf8Bytes, hexlify } from 'ethers';
 import {
-  SupportedChain,
   SetRecordResponse,
   GetRecordResponse,
   RecordExistsResponse,
@@ -16,7 +15,7 @@ export class RegistryService {
   constructor(
     private readonly chainsConfigService: ChainsConfigService,
     private readonly contractService: ContractService,
-  ) { }
+  ) {}
 
   private hashString(value: string): string {
     return keccak256(toUtf8Bytes(value));
