@@ -6,16 +6,20 @@ import {
   Query,
   HttpCode,
   HttpStatus,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiSecurity } from '@nestjs/swagger';
 import { FabricRegistryService } from '../services/fabric-registry.service';
 import {
   FabricSetRecordDto,
   FabricGetRecordDto,
 } from '../dto/fabric-registry.dto';
+import { ApiKeyGuard } from '../../auth/guards/api-key.guard';
 
 @ApiTags('Fabric Registry')
+@ApiSecurity('api-key')
 @Controller('fabric-registry')
+@UseGuards(ApiKeyGuard)
 export class FabricRegistryController {
   constructor(private readonly fabricRegistryService: FabricRegistryService) {}
 

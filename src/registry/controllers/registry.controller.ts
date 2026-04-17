@@ -6,6 +6,7 @@ import {
   Query,
   HttpCode,
   HttpStatus,
+  UseGuards,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -13,6 +14,7 @@ import {
   ApiResponse,
   ApiBody,
   ApiQuery,
+  ApiSecurity,
 } from '@nestjs/swagger';
 import {
   SupportedChain,
@@ -23,9 +25,12 @@ import {
 import { RegistryService } from '../services';
 import { SetRecordDto } from '../dto/set-record.dto';
 import { GetRecordDto } from '../dto/get-record.dto';
+import { ApiKeyGuard } from '../../auth/guards/api-key.guard';
 
 @ApiTags('Registry')
+@ApiSecurity('api-key')
 @Controller('registry')
+@UseGuards(ApiKeyGuard)
 export class RegistryController {
   constructor(private readonly registryService: RegistryService) {}
 
