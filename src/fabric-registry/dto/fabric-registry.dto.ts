@@ -3,6 +3,12 @@ import { IsNotEmpty, IsString } from 'class-validator';
 
 export class FabricSetRecordDto {
   @ApiProperty({
+    description: 'Namespace for the record (optional, defaults to "default")',
+    example: 'my-namespace',
+  })
+  @IsString()
+  namespace: string;
+  @ApiProperty({
     description: 'Key identifier (UTF-8 string)',
     example: 'my-key',
   })

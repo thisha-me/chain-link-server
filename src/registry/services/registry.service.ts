@@ -74,7 +74,6 @@ export class RegistryService {
 
   async getRecord(dto: GetRecordDto): Promise<GetRecordResponse> {
     const { chain, namespace, key } = dto;
-
     const config = this.chainsConfigService.getChainConfig(chain);
     const namespaceHash = this.hashString(namespace);
     const keyHash = this.hashString(key);
